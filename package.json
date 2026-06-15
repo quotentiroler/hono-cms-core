@@ -1,6 +1,6 @@
 {
   "name": "hono-cms-core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared engine for the Hono CMS template: auth, schemas, D1 query helpers, logger, and admin UI components for Cloudflare Workers + Hono JSX sites.",
   "type": "module",
   "license": "MIT",

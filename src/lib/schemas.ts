@@ -4,20 +4,24 @@ import { z } from "zod"
 // parseBody() returns { [key]: string | File }. These helpers
 // coerce raw form values into the correct types.
 
-const str = z.unknown().transform((v) => (v == null ? "" : String(v)))
+// NOTE: `.optional()` makes the object KEY omittable. In Zod 4 `z.unknown()` no
+// longer marks keys optional (it did in v3), so without this an omitted form field
+// (e.g. an unchecked checkbox or a blank optional input) fails with "nonoptional".
+const str = z.unknown().optional().transform((v) => (v == null ? "" : String(v)))
 const strRequired = str.pipe(z.string().min(1))
 const strOptional = str.pipe(z.string().transform((v) => v || null))
 const year = z
   .unknown()
+  .optional()
   .transform((v) => {
     if (v == null || v === "") return null
     const n = parseInt(String(v))
     return isNaN(n) ? null : n
   })
   .pipe(z.number().int().min(1900).max(2100).nullable())
-const checkbox = z.unknown().transform((v) => (v ? 1 : 0) as 0 | 1)
+const checkbox = z.unknown().optional().transform((v) => (v ? 1 : 0) as 0 | 1)
 const intDefault = (def: number) =>
-  z.unknown().transform((v) => {
+  z.unknown().optional().transform((v) => {
     if (v == null || v === "") return def
     const n = parseInt(String(v))
     return isNaN(n) ? def : n
