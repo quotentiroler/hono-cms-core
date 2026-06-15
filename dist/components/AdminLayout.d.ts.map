@@ -1,0 +1,1 @@
+{"version":3,"file":"AdminLayout.d.ts","sourceRoot":"","sources":["../../src/components/AdminLayout.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,EAAE,EAAE,iBAAiB,EAAE,MAAM,UAAU,CAAA;AAErD,KAAK,KAAK,GAAG,iBAAiB,CAAC;IAC7B,KAAK,CAAC,EAAE,MAAM,CAAA;IACd,QAAQ,CAAC,EAAE,MAAM,CAAA;CAClB,CAAC,CAAA;AAEF,eAAO,MAAM,WAAW,EAAE,EAAE,CAAC,KAAK,CAy7BjC,CAAA"}

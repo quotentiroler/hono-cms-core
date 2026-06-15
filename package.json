@@ -1,0 +1,68 @@
+{
+  "name": "hono-cms-core",
+  "version": "0.1.0",
+  "description": "Shared engine for the Hono CMS template: auth, schemas, D1 query helpers, logger, and admin UI components for Cloudflare Workers + Hono JSX sites.",
+  "type": "module",
+  "license": "MIT",
+  "author": "quotentiroler",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quotentiroler/hono-cms-core.git"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./logger": {
+      "types": "./dist/lib/logger.d.ts",
+      "default": "./dist/lib/logger.js"
+    },
+    "./auth": {
+      "types": "./dist/lib/auth.d.ts",
+      "default": "./dist/lib/auth.js"
+    },
+    "./schemas": {
+      "types": "./dist/lib/schemas.d.ts",
+      "default": "./dist/lib/schemas.js"
+    },
+    "./db": {
+      "types": "./dist/lib/db.d.ts",
+      "default": "./dist/lib/db.js"
+    },
+    "./components/AdminLayout": {
+      "types": "./dist/components/AdminLayout.d.ts",
+      "default": "./dist/components/AdminLayout.js"
+    },
+    "./components/ImageUpload": {
+      "types": "./dist/components/ImageUpload.d.ts",
+      "default": "./dist/components/ImageUpload.js"
+    },
+    "./components/HtmlEditor": {
+      "types": "./dist/components/HtmlEditor.d.ts",
+      "default": "./dist/components/HtmlEditor.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rimraf dist",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "hono": "^4",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260613.1",
+    "hono": "^4.12.25",
+    "rimraf": "^6.0.1",
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3"
+  }
+}
