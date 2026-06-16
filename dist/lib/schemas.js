@@ -54,6 +54,21 @@ export const teamMemberFormSchema = z.object({
     sort_order: intDefault(0),
     is_active: checkbox,
 });
+export const galleryFormSchema = z.object({
+    title: strRequired,
+    slug: strOptional,
+    description: strOptional,
+    year: year,
+    cover_image: strOptional,
+    sort_order: intDefault(0),
+    is_active: checkbox,
+});
+export const galleryImageFormSchema = z.object({
+    image: strRequired,
+    thumb: strOptional,
+    caption: strOptional,
+    sort_order: intDefault(0),
+});
 export const contactFormSchema = z.object({
     name: strRequired,
     email: strRequired.pipe(z.string().email()),
@@ -150,6 +165,24 @@ export const teamMemberRowSchema = z.object({
     image: z.string().nullable(),
     sort_order: z.number(),
     is_active: z.number(),
+});
+export const galleryRowSchema = z.object({
+    id: z.number(),
+    slug: z.string(),
+    title: z.string(),
+    description: z.string().nullable(),
+    year: z.number().nullable(),
+    cover_image: z.string().nullable(),
+    sort_order: z.number(),
+    is_active: z.number(),
+});
+export const galleryImageRowSchema = z.object({
+    id: z.number(),
+    gallery_id: z.number(),
+    image: z.string(),
+    thumb: z.string().nullable(),
+    caption: z.string().nullable(),
+    sort_order: z.number(),
 });
 export const pageRowSchema = z.object({
     id: z.number(),

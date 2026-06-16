@@ -60,6 +60,23 @@ export const teamMemberFormSchema = z.object({
   is_active: checkbox,
 })
 
+export const galleryFormSchema = z.object({
+  title: strRequired,
+  slug: strOptional,
+  description: strOptional,
+  year: year,
+  cover_image: strOptional,
+  sort_order: intDefault(0),
+  is_active: checkbox,
+})
+
+export const galleryImageFormSchema = z.object({
+  image: strRequired,
+  thumb: strOptional,
+  caption: strOptional,
+  sort_order: intDefault(0),
+})
+
 export const contactFormSchema = z.object({
   name: strRequired,
   email: strRequired.pipe(z.string().email()),
@@ -171,6 +188,26 @@ export const teamMemberRowSchema = z.object({
   is_active: z.number(),
 })
 
+export const galleryRowSchema = z.object({
+  id: z.number(),
+  slug: z.string(),
+  title: z.string(),
+  description: z.string().nullable(),
+  year: z.number().nullable(),
+  cover_image: z.string().nullable(),
+  sort_order: z.number(),
+  is_active: z.number(),
+})
+
+export const galleryImageRowSchema = z.object({
+  id: z.number(),
+  gallery_id: z.number(),
+  image: z.string(),
+  thumb: z.string().nullable(),
+  caption: z.string().nullable(),
+  sort_order: z.number(),
+})
+
 export const pageRowSchema = z.object({
   id: z.number(),
   slug: z.string(),
@@ -205,6 +242,9 @@ export const siteSettingsRowSchema = z.object({
 export type Article = z.infer<typeof articleRowSchema>
 export type Project = z.infer<typeof projectRowSchema>
 export type TeamMember = z.infer<typeof teamMemberRowSchema>
+export type Gallery = z.infer<typeof galleryRowSchema>
+export type GalleryImage = z.infer<typeof galleryImageRowSchema>
+export type GalleryWithImages = Gallery & { images: GalleryImage[] }
 export type Page = z.infer<typeof pageRowSchema>
 export type ContactSubmission = z.infer<typeof contactSubmissionRowSchema>
 export type SiteSettings = z.infer<typeof siteSettingsRowSchema>
@@ -212,4 +252,6 @@ export type SiteSettings = z.infer<typeof siteSettingsRowSchema>
 export type ArticleForm = z.infer<typeof articleFormSchema>
 export type ProjectForm = z.infer<typeof projectFormSchema>
 export type TeamMemberForm = z.infer<typeof teamMemberFormSchema>
+export type GalleryForm = z.infer<typeof galleryFormSchema>
+export type GalleryImageForm = z.infer<typeof galleryImageFormSchema>
 export type ContactForm = z.infer<typeof contactFormSchema>

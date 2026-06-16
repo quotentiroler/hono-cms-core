@@ -17,6 +17,22 @@ export async function getTeamMembers(db) {
         .all();
     return result.results || [];
 }
+export async function getGalleries(db) {
+    const result = await db
+        .prepare("SELECT * FROM galleries WHERE is_active = 1 ORDER BY year DESC, sort_order, id DESC")
+        .all();
+    return result.results || [];
+}
+export async function getGallery(db, slug) {
+    const gallery = await db.prepare("SELECT * FROM galleries WHERE slug = ?").bind(slug).first();
+    if (!gallery)
+        return null;
+    const images = await db
+        .prepare("SELECT * FROM gallery_images WHERE gallery_id = ? ORDER BY sort_order, id")
+        .bind(gallery.id)
+        .all();
+    return { ...gallery, images: images.results || [] };
+}
 export async function getPage(db, slug) {
     return await db
         .prepare("SELECT * FROM pages WHERE slug = ?")

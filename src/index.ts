@@ -23,6 +23,8 @@ export {
   getArticles,
   getProjects,
   getTeamMembers,
+  getGalleries,
+  getGallery,
   getPage,
   getSiteSettings,
 } from "./lib/db.js"

@@ -27,6 +27,21 @@ export declare const teamMemberFormSchema: z.ZodObject<{
     sort_order: z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<number, unknown>>;
     is_active: z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<0 | 1, unknown>>;
 }, z.core.$strip>;
+export declare const galleryFormSchema: z.ZodObject<{
+    title: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodString>;
+    slug: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodPipe<z.ZodString, z.ZodTransform<string | null, string>>>;
+    description: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodPipe<z.ZodString, z.ZodTransform<string | null, string>>>;
+    year: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<number | null, unknown>>, z.ZodNullable<z.ZodNumber>>;
+    cover_image: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodPipe<z.ZodString, z.ZodTransform<string | null, string>>>;
+    sort_order: z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<number, unknown>>;
+    is_active: z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<0 | 1, unknown>>;
+}, z.core.$strip>;
+export declare const galleryImageFormSchema: z.ZodObject<{
+    image: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodString>;
+    thumb: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodPipe<z.ZodString, z.ZodTransform<string | null, string>>>;
+    caption: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodPipe<z.ZodString, z.ZodTransform<string | null, string>>>;
+    sort_order: z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<number, unknown>>;
+}, z.core.$strip>;
 export declare const contactFormSchema: z.ZodObject<{
     name: z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodString>;
     email: z.ZodPipe<z.ZodPipe<z.ZodPipe<z.ZodOptional<z.ZodUnknown>, z.ZodTransform<string, unknown>>, z.ZodString>, z.ZodString>;
@@ -107,6 +122,24 @@ export declare const teamMemberRowSchema: z.ZodObject<{
     sort_order: z.ZodNumber;
     is_active: z.ZodNumber;
 }, z.core.$strip>;
+export declare const galleryRowSchema: z.ZodObject<{
+    id: z.ZodNumber;
+    slug: z.ZodString;
+    title: z.ZodString;
+    description: z.ZodNullable<z.ZodString>;
+    year: z.ZodNullable<z.ZodNumber>;
+    cover_image: z.ZodNullable<z.ZodString>;
+    sort_order: z.ZodNumber;
+    is_active: z.ZodNumber;
+}, z.core.$strip>;
+export declare const galleryImageRowSchema: z.ZodObject<{
+    id: z.ZodNumber;
+    gallery_id: z.ZodNumber;
+    image: z.ZodString;
+    thumb: z.ZodNullable<z.ZodString>;
+    caption: z.ZodNullable<z.ZodString>;
+    sort_order: z.ZodNumber;
+}, z.core.$strip>;
 export declare const pageRowSchema: z.ZodObject<{
     id: z.ZodNumber;
     slug: z.ZodString;
@@ -136,11 +169,18 @@ export declare const siteSettingsRowSchema: z.ZodObject<{
 export type Article = z.infer<typeof articleRowSchema>;
 export type Project = z.infer<typeof projectRowSchema>;
 export type TeamMember = z.infer<typeof teamMemberRowSchema>;
+export type Gallery = z.infer<typeof galleryRowSchema>;
+export type GalleryImage = z.infer<typeof galleryImageRowSchema>;
+export type GalleryWithImages = Gallery & {
+    images: GalleryImage[];
+};
 export type Page = z.infer<typeof pageRowSchema>;
 export type ContactSubmission = z.infer<typeof contactSubmissionRowSchema>;
 export type SiteSettings = z.infer<typeof siteSettingsRowSchema>;
 export type ArticleForm = z.infer<typeof articleFormSchema>;
 export type ProjectForm = z.infer<typeof projectFormSchema>;
 export type TeamMemberForm = z.infer<typeof teamMemberFormSchema>;
+export type GalleryForm = z.infer<typeof galleryFormSchema>;
+export type GalleryImageForm = z.infer<typeof galleryImageFormSchema>;
 export type ContactForm = z.infer<typeof contactFormSchema>;
 //# sourceMappingURL=schemas.d.ts.map
