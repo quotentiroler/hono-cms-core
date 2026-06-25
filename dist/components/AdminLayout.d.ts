@@ -1,33 +1,10 @@
-import type { FC, PropsWithChildren } from "hono/jsx";
-export type AdminNavLink = {
-    href: string;
-    label: string;
-    icon?: string;
-};
-export type AdminNavSection = {
-    title: string;
-    links: AdminNavLink[];
-};
-export declare const DEFAULT_ADMIN_NAV: AdminNavSection[];
-export declare const ADMIN_ICONS: {
-    dashboard: string;
-    pages: string;
-    projects: string;
-    articles: string;
-    team: string;
-    images: string;
-    messages: string;
-    settings: string;
-};
-type Props = PropsWithChildren<{
-    title?: string;
-    username?: string;
-    nav?: AdminNavSection[];
-    brand?: {
-        name?: string;
-        logo?: string;
-    };
-}>;
-export declare const AdminLayout: FC<Props>;
-export {};
+/**
+ * The admin shell now lives in the shared org kit. The previous local implementation moved
+ * into @max-network/hono-ui/admin as a configurable superset whose API is a strict superset of
+ * the one this module used to expose (`AdminLayout`, `AdminNavSection`/`AdminNavLink`,
+ * `DEFAULT_ADMIN_NAV`, `ADMIN_ICONS`) — `nav`/`links`/`icon`-as-string/`brand` all still work —
+ * so consumers are unaffected. Re-exported here to preserve the `hono-cms-core/components/AdminLayout`
+ * import path.
+ */
+export * from "@max-network/hono-ui/admin";
 //# sourceMappingURL=AdminLayout.d.ts.map

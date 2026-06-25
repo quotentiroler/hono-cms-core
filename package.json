@@ -54,6 +54,9 @@
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
     "prepare": "npm run build"
   },
+  "dependencies": {
+    "@max-network/hono-ui": "^0.3.0"
+  },
   "peerDependencies": {
     "hono": "^4",
     "zod": "^4"
