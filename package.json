@@ -1,6 +1,6 @@
 {
   "name": "hono-cms-core",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Shared engine for the Hono CMS template: auth, schemas, D1 query helpers, logger, and admin UI components for Cloudflare Workers + Hono JSX sites.",
   "type": "module",
   "license": "MIT",
@@ -35,10 +35,6 @@
       "types": "./dist/lib/db.d.ts",
       "default": "./dist/lib/db.js"
     },
-    "./components/AdminLayout": {
-      "types": "./dist/components/AdminLayout.d.ts",
-      "default": "./dist/components/AdminLayout.js"
-    },
     "./components/ImageUpload": {
       "types": "./dist/components/ImageUpload.d.ts",
       "default": "./dist/components/ImageUpload.js"
@@ -53,9 +49,6 @@
     "clean": "rimraf dist",
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
     "prepare": "npm run build"
-  },
-  "dependencies": {
-    "@max-network/hono-ui": "^0.3.0"
   },
   "peerDependencies": {
     "hono": "^4",
