@@ -30,7 +30,6 @@ export {
 } from "./lib/db.js"
 export type { PageContent } from "./lib/db.js"
 
-export { AdminLayout, DEFAULT_ADMIN_NAV, ADMIN_ICONS } from "./components/AdminLayout.js"
-export type { AdminNavLink, AdminNavSection } from "./components/AdminLayout.js"
+// AdminLayout now lives in @max-network/hono-ui/admin — consumers import it from there directly.
 export { ImageUpload } from "./components/ImageUpload.js"
 export { HtmlEditor } from "./components/HtmlEditor.js"
